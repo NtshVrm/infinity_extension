@@ -28,6 +28,7 @@
   display: flex;
   flex-flow: column;
   z-index: 1;
+  align-items: center;
 }
 
 .intro-text {
@@ -37,7 +38,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin: 0 auto;
-  animation: typing 1.5s steps(50, end), blink-caret 0.5s step-end infinite;
+  animation: typing 1.2s steps(50, end), blink-caret 1s step-end infinite;
   border-right: 3px solid var(--white);
 }
 
@@ -46,6 +47,8 @@
   background-color: transparent;
   border: none;
   border-bottom: 5px solid var(--white);
+  width: 60%;
+  text-align: center;
 }
 
 .intro-input:focus {
