@@ -1,0 +1,74 @@
+@import url("../../reset.css");
+
+:root {
+  --white: white;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  height: 100vh;
+  width: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://picsum.photos/1366/768");
+  z-index: -1;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  z-index: 1;
+}
+
+.intro-text {
+  color: var(--white);
+  font-size: 5rem;
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 1.5s steps(50, end), blink-caret 0.5s step-end infinite;
+  border-right: 3px solid var(--white);
+}
+
+.intro-input {
+  padding: 2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 5px solid var(--white);
+}
+
+.intro-input:focus {
+  outline: none;
+  color: var(--white);
+  font-size: 3rem;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--white);
+  }
+}
