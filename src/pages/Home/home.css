@@ -2,12 +2,15 @@
 
 :root {
   --white: white;
+  --black: black;
 }
 
 .home-container {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .banner {
@@ -49,12 +52,47 @@
   border-bottom: 5px solid var(--white);
   width: 60%;
   text-align: center;
+  color: var(--white);
+  font-size: 3rem;
 }
 
 .intro-input:focus {
   outline: none;
-  color: var(--white);
-  font-size: 3rem;
+}
+
+.intro-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: var(--white);
+  color: var(--black);
+  border: none;
+  border-radius: 2rem;
+  height: 3rem;
+  width: fit-content;
+  padding: 0 1rem 0 4rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  color: var(--black);
+  border-radius: 2rem;
+  height: 3rem;
+  width: 3rem;
+  left: -0.5rem;
+  transition: all 0.3s;
+  margin: 0.5rem;
+}
+
+.intro-button:hover .icon {
+  width: calc(100%);
 }
 
 @keyframes typing {
