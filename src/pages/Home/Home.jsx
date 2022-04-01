@@ -1,10 +1,12 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 export default function Home() {
   const nameInput = useRef("");
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
 
   return (
@@ -20,7 +22,7 @@ export default function Home() {
       </div>
 
       {userName !== "" ? (
-        <button className="intro-button">
+        <button className="intro-button" onClick={() => navigate("/Info")}>
           <div className="icon">
             <FontAwesomeIcon icon={faArrowRight} />
           </div>

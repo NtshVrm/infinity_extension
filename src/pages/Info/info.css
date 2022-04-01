@@ -1,0 +1,66 @@
+@import url("../Home/home.css");
+
+.info-container {
+  display: grid;
+  grid-template-rows: 0.5fr 4fr 0.5fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+
+.header {
+  grid-area: "header";
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  gap: 1rem;
+  max-width: fit-content;
+  border: 2px solid var(--white);
+}
+
+.search-logo {
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: white;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  font-size: 1.2rem;
+  color: var(--white);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.search-input:focus {
+  outline: none;
+  color: var(--white);
+}
+
+.clear-icon {
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.content {
+  grid-area: "content";
+  background-color: salmon;
+}
+
+.footer {
+  grid-area: "footer";
+  background-color: blue;
+}
