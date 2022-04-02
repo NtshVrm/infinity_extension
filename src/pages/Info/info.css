@@ -1,0 +1,258 @@
+@import url("../Home/home.css");
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: transparent;
+  color: var(--white);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.2rem solid var(--white);
+  border-radius: 0.2rem;
+  transform: translateY(0.5rem);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--white);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.info-container {
+  display: grid;
+  grid-template-rows: 0.5fr 4fr 0.5fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+
+.header {
+  grid-area: "header";
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  gap: 1rem;
+  max-width: fit-content;
+  border: 2px solid var(--white);
+}
+
+.search-logo {
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: white;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  font-size: 1.2rem;
+  color: var(--white);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.search-input:focus {
+  outline: none;
+  color: var(--white);
+}
+
+.clear-icon {
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.weather {
+  display: flex;
+  flex-flow: column;
+  color: var(--white);
+}
+
+.weather-temperature {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.weather-location {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.content {
+  grid-area: "content";
+  /* background-color: salmon; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: var(--white);
+}
+
+.time {
+  font-size: 13rem;
+}
+
+.user-message {
+  font-size: 3rem;
+}
+
+.user-question {
+  font-size: 3rem;
+}
+
+.user-focus {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.focus-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 3rem;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.edit-icon {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  background-color: rgba(49, 49, 49, 0.7);
+}
+
+.focus-input {
+  padding: 2rem;
+  background-color: transparent;
+  border: none;
+  width: 40%;
+  border-bottom: 5px solid var(--white);
+  text-align: center;
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.focus-input:focus {
+  outline: none;
+}
+
+.footer {
+  grid-area: "footer";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  padding: 0.5rem;
+}
+
+.user-logout {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.quote {
+  font-size: 1.2rem;
+}
+
+.todo {
+  font-size: 1.2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.todo-expand {
+  position: absolute;
+  background-color: rgba(49, 49, 49, 0.7);
+  height: fit-content;
+  min-width: 15rem;
+  right: 1rem;
+  bottom: 4rem;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-icon {
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.clear-icon:hover {
+  background-color: rgba(163, 159, 159, 0.7);
+}
+
+.todo-title {
+  font-size: 2rem;
+}
+
+.todo-items {
+  display: flex;
+  flex-flow: column;
+  font-size: 1.2rem;
+  margin: auto;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.todo-footer {
+  display: flex;
+}
+
+.add-button {
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 2rem;
+  background-color: rgba(163, 159, 159, 0.7);
+  cursor: pointer;
+}
