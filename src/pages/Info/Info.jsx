@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import {
   faPencil,
   faPowerOff,
@@ -5,9 +6,10 @@ import {
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./info.css";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
 
 export default function Info() {
   const searchBar = useRef("");
@@ -21,6 +23,20 @@ export default function Info() {
   const [todoDisplay, setTodoDisplay] = useState(false);
   const [todoList, setTodoList] = useState([]);
 
+  const time = new Date();
+  const hour = time.getHours();
+  const minute = time.getMinutes();
+
+  const [weatherData, setWeatherData] = useState({
+    location: {
+      name: "",
+      region: "",
+      country: "",
+    },
+    temperature: 0,
+    icon: "",
+  });
+
   function todoHandler() {
     todoInput.current.value &&
       setTodoList([
@@ -28,6 +44,43 @@ export default function Info() {
         { _id: uuid(), name: todoInput.current.value, todoCheck: true },
       ]);
   }
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+  async function getWeather(latitude, longitude) {
+    let request = "";
+    latitude && longitude
+      ? (request = `http://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=${latitude},${longitude}&aqi=yes`)
+      : (request = `http://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=Bangalore&aqi=yes`);
+    try {
+      const res = await axios.get(request);
+      setWeatherData({
+        location: {
+          name: res.data.location.name,
+          region: res.data.location.region,
+          country: res.data.location.country,
+        },
+        temperature: res.data.current.temp_c,
+        icon: res.data.current.condition.icon,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const success = (position) => {
+    getWeather(position.coords.latitude, position.coords.longitude);
+  };
+
+  const error = () => {
+    getWeather();
+  };
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
 
   return (
     <div className="info-container banner">
@@ -48,12 +101,26 @@ export default function Info() {
           </div>
         </div>
         <div className="weather">
-          <div className="weather-temperature">33 &deg;</div>
-          <div className="weather-location">Bengaluru</div>
+          <div className="weather-temperature">
+            <img
+              src={weatherData.icon}
+              alt="weather-icon"
+              className="weather-icon"
+            />
+            {weatherData.temperature} &deg;
+          </div>
+          <div className="weather-location">
+            {weatherData.location.name}, {weatherData.location.region},{" "}
+            {weatherData.location.country}
+          </div>
         </div>
       </div>
       <div className="content">
-        <div className="time">8:08</div>
+        <div className="time">
+          <div>
+            {hour}:{minute}
+          </div>
+        </div>
         <div className="user-message">Good Evening, Max</div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">
