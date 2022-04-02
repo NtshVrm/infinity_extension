@@ -81,8 +81,6 @@ export default function Info() {
               }
             />
           )}
-
-          {console.log(focus)}
         </div>
       </div>
       <div className="footer">
