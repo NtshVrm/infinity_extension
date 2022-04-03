@@ -47,7 +47,7 @@ export default function Info() {
 
   useEffect(() => {
     getLocation();
-  }, []);
+  });
 
   async function getWeather(latitude, longitude) {
     let request = "";
