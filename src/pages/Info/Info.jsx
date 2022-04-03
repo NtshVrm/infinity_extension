@@ -52,8 +52,8 @@ export default function Info() {
   async function getWeather(latitude, longitude) {
     let request = "";
     latitude && longitude
-      ? (request = `http://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=${latitude},${longitude}&aqi=yes`)
-      : (request = `http://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=Bangalore&aqi=yes`);
+      ? (request = `https://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=${latitude},${longitude}&aqi=yes`)
+      : (request = `https://api.weatherapi.com/v1/current.json?key=05c5b06880884ecd9e1163032220204&q=Bangalore&aqi=yes`);
     try {
       const res = await axios.get(request);
       setWeatherData({
