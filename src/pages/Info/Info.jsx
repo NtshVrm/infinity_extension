@@ -121,7 +121,7 @@ export default function Info() {
             {hour}:{minute}
           </div>
         </div>
-        <div className="user-message">Good Evening, Max</div>
+        <div className="user-message">Good Evening, Name</div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">
           {focus !== "" && focusDisplay ? (
