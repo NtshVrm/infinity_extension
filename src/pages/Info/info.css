@@ -107,7 +107,6 @@ input[type="checkbox"]:checked::before {
 
 .content {
   grid-area: "content";
-  /* background-color: salmon; */
   align-items: center;
   justify-content: center;
   display: flex;
