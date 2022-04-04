@@ -94,17 +94,19 @@ input[type="checkbox"]:checked::before {
 .weather-temperature {
   display: flex;
   justify-content: flex-end;
-  font-size: 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
   font-weight: bold;
-}
-.weather-location {
   font-style: italic;
+}
+
+.weather-location {
   font-size: 1.1rem;
 }
 
 .content {
   grid-area: "content";
-  /* background-color: salmon; */
   align-items: center;
   justify-content: center;
   display: flex;
