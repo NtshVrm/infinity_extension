@@ -10,14 +10,17 @@ import { useEffect, useRef, useState } from "react";
 import "./info.css";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Info() {
+  const navigate = useNavigate();
   const searchBar = useRef("");
   const focusInput = useRef("");
   const todoInput = useRef("");
   const [focus, setFocus] = useState("");
   const [focusDisplay, setFocusDisplay] = useState(false);
   const [search, setSearch] = useState("");
+  const [quote, setQuote] = useState("");
   const [checked, setChecked] = useState(false);
 
   const [todoDisplay, setTodoDisplay] = useState(false);
@@ -46,9 +49,25 @@ export default function Info() {
   }
 
   useEffect(() => {
+    localStorage.getItem("userName")
+      ? ""
+      : (navigate("/Home"), window.location.reload(false));
     getLocation();
   });
 
+  useEffect(() => {
+    getQuote();
+  }, []);
+  async function getQuote() {
+    try {
+      const res = await axios.get(
+        "https://api.quotable.io/random?tags=education|faith|wisdom|happiness|inspirational|success|&maxLength=100"
+      );
+      setQuote(res.data.content);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function getWeather(latitude, longitude) {
     let request = "";
     latitude && longitude
@@ -121,7 +140,9 @@ export default function Info() {
             {hour}:{minute}
           </div>
         </div>
-        <div className="user-message">Good Evening, Name</div>
+        <div className="user-message">
+          Good Evening, {localStorage.getItem("userName")}
+        </div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">
           {focus !== "" && focusDisplay ? (
@@ -151,10 +172,13 @@ export default function Info() {
         </div>
       </div>
       <div className="footer">
-        <div className="user-logout">
-          <FontAwesomeIcon icon={faPowerOff} />
+        <div
+          className="user-logout"
+          onClick={() => localStorage.removeItem("userName")}
+        >
+          <FontAwesomeIcon icon={faPowerOff} /> Logout
         </div>
-        <div className="quote">"RANDOM QUOTE"</div>
+        <div className="quote">"{quote !== "" && quote}"</div>
         <div className="todo" onClick={() => setTodoDisplay((prev) => !prev)}>
           TODO
         </div>

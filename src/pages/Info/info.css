@@ -188,8 +188,11 @@ input[type="checkbox"]:checked::before {
 }
 
 .user-logout {
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .quote {

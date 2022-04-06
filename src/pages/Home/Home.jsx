@@ -17,12 +17,20 @@ export default function Home() {
           type="text"
           className="intro-input"
           ref={nameInput}
-          onChange={() => setUserName(nameInput.current.value)}
+          onChange={() => {
+            setUserName(nameInput.current.value);
+            localStorage.setItem("userName", nameInput.current.value);
+          }}
         />
       </div>
 
       {userName !== "" ? (
-        <button className="intro-button" onClick={() => navigate("/Info")}>
+        <button
+          className="intro-button"
+          onClick={() => {
+            localStorage.getItem("userName") && navigate("/Info");
+          }}
+        >
           <div className="icon">
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
