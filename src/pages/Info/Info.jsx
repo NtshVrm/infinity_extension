@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import {
+  faMinusCircle,
   faPencil,
   faPowerOff,
   faSearch,
@@ -58,6 +59,7 @@ export default function Info() {
   useEffect(() => {
     getQuote();
   }, []);
+
   async function getQuote() {
     try {
       const res = await axios.get(
@@ -148,14 +150,24 @@ export default function Info() {
           {focus !== "" && focusDisplay ? (
             <>
               <div className="focus-title">TODAY</div>
-              <label className="focus-item">
-                <input
-                  type="checkbox"
-                  onChange={() => setChecked((prev) => !prev)}
+              <div className="focus-wrapper">
+                <label className="focus-item">
+                  <input
+                    type="checkbox"
+                    onChange={() => setChecked((prev) => !prev)}
+                    checked={checked}
+                  />
+                  <div className={`${checked ? "strike" : ""}`}>{focus}</div>
+                </label>
+                <FontAwesomeIcon
+                  icon={faPencil}
+                  className="edit-icon"
+                  onClick={() => {
+                    setChecked(false);
+                    setFocusDisplay((prev) => !prev);
+                  }}
                 />
-                <div className={`${checked ? "strike" : ""}`}>{focus}</div>
-                <FontAwesomeIcon icon={faPencil} className="edit-icon" />
-              </label>
+              </div>
             </>
           ) : (
             <input
@@ -186,30 +198,48 @@ export default function Info() {
           <div className="todo-expand">
             <div className="todo-header">
               <div className="todo-title">Today</div>
-              <div className="todo-hide" onClick={() => setTodoDisplay(false)}>
-                <FontAwesomeIcon icon={faX} className="clear-icon" />
+              <div
+                className="todo-hide"
+                onClick={() => {
+                  setTodoDisplay(false);
+                }}
+              >
+                <FontAwesomeIcon icon={faMinusCircle} className="clear-icon" />
               </div>
             </div>
             <div className="todo-items">
               {todoList !== [] &&
                 todoList.map((item) => {
                   return (
-                    <label
-                      className={`items ${item.todoCheck ? "" : "strike"}`}
-                    >
-                      <input
-                        type="checkbox"
-                        onChange={() => {
-                          const newList = todoList.map((obj) => {
-                            return obj._id === item._id
-                              ? { ...obj, todoCheck: !item.todoCheck }
-                              : obj;
-                          });
-                          setTodoList(newList);
+                    <div className="item-wrapper">
+                      <label
+                        className={`items ${item.todoCheck ? "" : "strike"}`}
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            const newList = todoList.map((obj) => {
+                              return obj._id === item._id
+                                ? { ...obj, todoCheck: !item.todoCheck }
+                                : obj;
+                            });
+                            setTodoList(newList);
+                          }}
+                          checked={item.todoCheck ? false : true}
+                        />
+                        {item.name}
+                      </label>
+                      <FontAwesomeIcon
+                        className="delete-icon"
+                        icon={faX}
+                        onClick={() => {
+                          const tempList = todoList
+                            .map((obj) => obj)
+                            .filter((obj) => obj._id !== item._id);
+                          setTodoList(tempList);
                         }}
                       />
-                      {item.name}
-                    </label>
+                    </div>
                   );
                 })}
             </div>
