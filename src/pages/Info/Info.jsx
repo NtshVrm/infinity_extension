@@ -52,7 +52,7 @@ export default function Info() {
   useEffect(() => {
     localStorage.getItem("userName")
       ? ""
-      : (navigate("/Home"), window.location.reload(false));
+      : (navigate("/"), window.location.reload(false));
     getLocation();
   });
 
@@ -110,13 +110,15 @@ export default function Info() {
           <div class="search-logo">
             <FontAwesomeIcon icon={faSearch} />
           </div>
-          <input
-            class="search-input"
-            type="text"
-            value={search}
-            ref={searchBar}
-            onChange={() => setSearch(searchBar.current.value)}
-          />
+          <label>
+            <input
+              className="search-input"
+              type="text"
+              value={search}
+              ref={searchBar}
+              onChange={() => setSearch(searchBar.current.value)}
+            />
+          </label>
           <div className="clear-icon" onClick={() => setSearch("")}>
             <FontAwesomeIcon icon={faX} />
           </div>
