@@ -30,6 +30,7 @@ export default function Info() {
   const time = new Date();
   const hour = time.getHours();
   const minute = time.getMinutes();
+  const minutes = minute / 10 < 1 ? `0${minute}` : minute;
 
   const [weatherData, setWeatherData] = useState({
     location: {
@@ -155,11 +156,17 @@ export default function Info() {
       <div className="content">
         <div className="time">
           <div>
-            {hour}:{minute}
+            {hour}:{minutes}
           </div>
         </div>
         <div className="user-message">
-          Hey, {localStorage.getItem("userName")}!
+          Good
+          {(hour < 4 && " night") ||
+            (hour < 12 && " morning") ||
+            (hour < 16 && " afternoon") ||
+            (hour < 21 && " evening") ||
+            "night"}
+          , {localStorage.getItem("userName")}!
         </div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">
