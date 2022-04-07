@@ -52,7 +52,10 @@ export default function Info() {
   useEffect(() => {
     localStorage.getItem("userName")
       ? ""
-      : (navigate("/"), window.location.reload(false));
+      : setTimeout(() => {
+          navigate("/");
+          window.location.reload(false);
+        });
     getLocation();
   });
 
@@ -106,22 +109,31 @@ export default function Info() {
   return (
     <div className="info-container banner">
       <div className="header">
-        <div class="searchbar">
+        <div className="searchbar">
           <div class="search-logo">
             <FontAwesomeIcon icon={faSearch} />
           </div>
-          <label>
-            <input
-              className="search-input"
-              type="text"
-              value={search}
-              ref={searchBar}
-              onChange={() => setSearch(searchBar.current.value)}
-            />
-          </label>
-          <div className="clear-icon" onClick={() => setSearch("")}>
-            <FontAwesomeIcon icon={faX} />
-          </div>
+          <form
+            method="get"
+            action="https://www.google.com/search"
+            className="search-form"
+          >
+            <label>
+              <input
+                type="text"
+                name="q"
+                placeholder="Google Search"
+                className="search-input"
+                autocomplete="off"
+                value={search}
+                ref={searchBar}
+                onChange={() => setSearch(searchBar.current.value)}
+              />
+            </label>
+            <div className="clear-icon" onClick={() => setSearch("")}>
+              <FontAwesomeIcon icon={faX} />
+            </div>
+          </form>
         </div>
         <div className="weather">
           <div className="weather-temperature">
