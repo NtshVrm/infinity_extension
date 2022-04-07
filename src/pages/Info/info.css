@@ -70,8 +70,6 @@ input[type="checkbox"]:checked::before {
   font-size: 1.2rem;
   color: var(--white);
   background-color: transparent;
-  display: flex;
-  align-items: center;
 }
 
 .search-input:focus {
@@ -83,6 +81,9 @@ input[type="checkbox"]:checked::before {
   color: var(--white);
   cursor: pointer;
   padding: 0.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .weather {
@@ -140,12 +141,19 @@ input[type="checkbox"]:checked::before {
   font-weight: bold;
 }
 
+.focus-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .focus-item {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   font-size: 3rem;
+  font-style: italic;
 }
 
 .strike {
@@ -203,6 +211,11 @@ input[type="checkbox"]:checked::before {
   font-size: 1.2rem;
   position: relative;
   cursor: pointer;
+  color: var(--black);
+  font-weight: bold;
+  background-color: var(--white);
+  border-radius: 2rem;
+  padding: 0.5rem;
 }
 
 .todo-expand {
@@ -222,6 +235,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .clear-icon {
+  font-size: 1.2rem;
   padding: 0.5rem;
   border-radius: 50%;
 }
@@ -241,11 +255,27 @@ input[type="checkbox"]:checked::before {
   margin: auto;
 }
 
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .items {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin: 1rem;
+  justify-content: space-between;
+}
+
+.delete-icon {
+  font-size: 1rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+.delete-icon:hover {
+  background-color: rgba(163, 159, 159, 0.7);
 }
 
 .todo-footer {
