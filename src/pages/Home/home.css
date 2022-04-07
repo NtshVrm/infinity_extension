@@ -3,6 +3,8 @@
 :root {
   --white: white;
   --black: black;
+  --bg-opaque-black: rgba(49, 49, 49, 0.7);
+  --bg-opaque-white: rgba(163, 159, 159, 0.7);
 }
 
 .home-container {

@@ -43,7 +43,6 @@ input[type="checkbox"]:checked::before {
 
 .header {
   grid-area: "header";
-  /* background-color: aqua; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,7 +176,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .edit-icon:hover {
-  background-color: rgba(49, 49, 49, 0.7);
+  background-color: var(--bg-opaque-black);
 }
 
 .focus-input {
@@ -229,7 +228,7 @@ input[type="checkbox"]:checked::before {
 
 .todo-expand {
   position: absolute;
-  background-color: rgba(49, 49, 49, 0.7);
+  background-color: var(--bg-opaque-black);
   height: fit-content;
   min-width: 15rem;
   right: 1rem;
@@ -250,7 +249,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .clear-icon:hover {
-  background-color: rgba(163, 159, 159, 0.7);
+  background-color: var(--bg-opaque-white);
 }
 
 .todo-title {
@@ -284,7 +283,7 @@ input[type="checkbox"]:checked::before {
   border-radius: 50%;
 }
 .delete-icon:hover {
-  background-color: rgba(163, 159, 159, 0.7);
+  background-color: var(--bg-opaque-white);
 }
 
 .todo-footer {
@@ -297,6 +296,6 @@ input[type="checkbox"]:checked::before {
   color: var(--white);
   padding: 0.5rem;
   border-radius: 2rem;
-  background-color: rgba(163, 159, 159, 0.7);
+  background-color: var(--bg-opaque-white);
   cursor: pointer;
 }
