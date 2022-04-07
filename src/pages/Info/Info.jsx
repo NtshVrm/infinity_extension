@@ -117,6 +117,8 @@ export default function Info() {
             method="get"
             action="https://www.google.com/search"
             className="search-form"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <label>
               <input
