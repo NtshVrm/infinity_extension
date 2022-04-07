@@ -159,7 +159,13 @@ export default function Info() {
           </div>
         </div>
         <div className="user-message">
-          Hey, {localStorage.getItem("userName")}!
+          Good
+          {(hour < 4 && " night") ||
+            (hour < 12 && " morning") ||
+            (hour < 16 && " afternoon") ||
+            (hour < 21 && " evening") ||
+            "night"}
+          , {localStorage.getItem("userName")}!
         </div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">
