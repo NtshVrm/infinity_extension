@@ -28,6 +28,10 @@ input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
+::placeholder {
+  color: var(--white);
+}
+
 .info-container {
   display: grid;
   grid-template-rows: 0.5fr 4fr 0.5fr;
@@ -70,6 +74,11 @@ input[type="checkbox"]:checked::before {
   font-size: 1.2rem;
   color: var(--white);
   background-color: transparent;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
 }
 
 .search-input:focus {
