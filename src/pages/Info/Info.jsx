@@ -159,7 +159,7 @@ export default function Info() {
           </div>
         </div>
         <div className="user-message">
-          Good Evening, {localStorage.getItem("userName")}
+          Hey, {localStorage.getItem("userName")}!
         </div>
         <div className="user-question">What's your main focus for today?</div>
         <div className="user-focus">

@@ -1,6 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Infinity",
+  "name": "Infinity Focus",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "homepage_url": "https://github.com/zanozbot/uuid-generator",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,16 +11,24 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Infinity Focus",
+    "default_icon": {
+      "32": "favicon-32x32.png",
+      "16": "favicon-16x16.png"
+    }
+  },
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
